@@ -552,10 +552,6 @@ pub fn truncate_line_ending(s: &mut String) {
 pub fn select_mode(mode: Option<&str>) -> Option<String> {
     if let Some(mode) = mode {
         Some(mode.to_owned())
-    } else if cfg!(target_os = "macos") {
-        Some("@fbcode//mode/mac".to_owned())
-    } else if cfg!(target_os = "windows") {
-        Some("@fbcode//mode/win".to_owned())
     } else {
         // fallback to the platform default mode. This is likely slower than optimal, but
         // `rust-project check` will work.
